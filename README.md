@@ -1,0 +1,2 @@
+# PirateDice
+dados mentirosos (game)
