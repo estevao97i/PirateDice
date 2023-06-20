@@ -1,7 +1,34 @@
 import random
 import time 
 
-def tentativaRobo1(dadosRobo):
+# def tentativaRobo1(dadosRobo):
+def aleatorio1():
+    aleatorio = random.randint(1, 6)
+    res = [aleatorio, 2]
+    return res
+
+def aleatorio2(dadosRobo):
+    aleatorio = random.choice(dadosRobo)
+    res = [aleatorio, dadosRobo.count(aleatorio)]
+    return res
+
+def aleatorio2(dadosRobo):
+    aleatorio = random.choice(dadosRobo)
+    res = [aleatorio, dadosRobo.count(aleatorio) + 1]
+    return res
+
+def aleatorio3(dadosChuteRobo, resultadoIncidencias):
+    a = [dadosChuteRobo, resultadoIncidencias + 1 ]
+    return a
+
+def aleatorio4(dadosChuteRobo, resultadoIncidencias):
+    a = [dadosChuteRobo, resultadoIncidencias + 2 ]
+    return a
+      
+def aleatorio5(dadosChuteRobo, resultadoIncidencias):
+    res = [dadosChuteRobo, resultadoIncidencias]        
+    return res   
+          
 
  
 def calcularProbabilidade(listaJogador, listaRobo, numeroEscolhido, quantidade):
@@ -131,9 +158,22 @@ def apostar(dadosMao, dadosRobo):
             resultadoIncidencias = dadosRobo.count(dado)
             dadosChuteRobo = dado
 
-    resultadoIncidencias += 1
+    chuteAleatorioRobo = random.choice([aleatorio1(), aleatorio2(dadosRobo=dadosRobo),
+                                         aleatorio3(dadosChuteRobo=dadosChuteRobo, resultadoIncidencias=resultadoIncidencias),
+                                         aleatorio4(dadosChuteRobo=dadosChuteRobo, resultadoIncidencias=resultadoIncidencias),
+                                         aleatorio5(dadosChuteRobo=dadosChuteRobo, resultadoIncidencias=resultadoIncidencias)])         
 
-    print(f"Aposta do seu adversário é: {resultadoIncidencias} -> {dadosChuteRobo}' no jogo")
+    res = chuteAleatorioRobo
+
+    print()
+    print('dados adversario', dadosRobo)
+    print()
+
+    print()
+    print('res ->', res)
+    print()
+
+    print(f"Aposta do seu adversário é: {res[0]} -> {res[1]}' no jogo")
 
     print('==========================================================')
     print('==========================================================')
