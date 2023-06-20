@@ -1,6 +1,9 @@
 import random
 import time 
 
+def tentativaRobo1(dadosRobo):
+
+ 
 def calcularProbabilidade(listaJogador, listaRobo, numeroEscolhido, quantidade):
     somatorio = 1
     ocorrenciasNumeroListaRobo =  quantidade - listaRobo.count(numeroEscolhido) 
@@ -48,8 +51,6 @@ def girarDados(numDadosMao, numDadosRobo):
 
     apostar(dadosMao, dadosRobo)
 
-    # TO DO
-    # Arrumar essa logica para o computador também ganhar... (colocar um if e receber quem está afirmando)
 
 def ganhadorPerdedor(numAposta, ocorrencias, dadosMao, dadosRobo, quemEscolheu):
     if (quemEscolheu == 'robo'):
@@ -139,6 +140,7 @@ def apostar(dadosMao, dadosRobo):
     print('            SEU ADVERSÁRIO ESTÁ MENTINDO?                 ')
     print('==========================================================')
     print('==========================================================')
+    
     time.sleep(1.5)
 
     print("Seus dados:", dadosMao)
@@ -228,13 +230,3 @@ numDadosMao = 2
 numDadosRobo = 2
 
 girarDados(numDadosMao=numDadosMao, numDadosRobo=numDadosRobo)
-
-
-
-    
-
-
-
-
-
-
