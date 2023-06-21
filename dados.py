@@ -1,7 +1,6 @@
 import random
 import time 
 
-# def tentativaRobo1(dadosRobo):
 def aleatorio1():
     aleatorio = random.randint(1, 6)
     res = [aleatorio, 2]
@@ -165,14 +164,6 @@ def apostar(dadosMao, dadosRobo):
 
     res = chuteAleatorioRobo
 
-    print()
-    print('dados adversario', dadosRobo)
-    print()
-
-    print()
-    print('res ->', res)
-    print()
-
     print(f"Aposta do seu adversário é: {res[0]} -> {res[1]}' no jogo")
 
     print('==========================================================')
@@ -266,7 +257,7 @@ print('=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=')
 print('aperte ENTER parar girar os dados!')
 enter = input()
 
-numDadosMao = 2
-numDadosRobo = 2
+numDadosMao = 6
+numDadosRobo = 6
 
 girarDados(numDadosMao=numDadosMao, numDadosRobo=numDadosRobo)
