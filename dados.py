@@ -33,19 +33,14 @@ def aleatorio6():
     res = [aleatorio, 1]
     return res 
  
-def calcularProbabilidade(listaJogador, listaRobo, numeroEscolhido, quantidade):
+def calcularProbabilidade(listaRobo, numeroEscolhido, quantidade):
     somatorio = 1
     ocorrenciasNumeroListaRobo =  quantidade - listaRobo.count(numeroEscolhido) 
-
-    print()
-    print('quantidade escolhida pelo jogador menos o tanto que tem na mao do robo:', ocorrenciasNumeroListaRobo)
-    print('lista robo:', listaRobo)
-    print()
 
     if (ocorrenciasNumeroListaRobo <= 0):
         return False
     for _ in range(ocorrenciasNumeroListaRobo):
-        somatorio *= (1 / len(listaJogador))
+        somatorio *= (1 / 6)
     return somatorio * 100
 
 
@@ -127,11 +122,11 @@ def ganhadorPerdedor(numAposta, ocorrencias, dadosMao, dadosRobo, quemEscolheu):
 
 def resultadoAposta(numAposta, ocorrencias, dadosMao, dadosRobo, quemEscolheu):
     if(quemEscolheu == 'robo'):
-        print(f"Seu adversário disse que não tem {ocorrencias} {numAposta}' no jogo!")
+        print(f"Seu adversário disse que não tem {ocorrencias} -> {numAposta}' no jogo!")
         print('Seus dados são:', dadosMao)
         return ganhadorPerdedor(numAposta, ocorrencias, dadosMao, dadosRobo, quemEscolheu='robo')
     elif (quemEscolheu == 'jogador'):
-         print(f"Você afirma que não tem {ocorrencias} {numAposta}' no jogo!")
+         print(f"Você afirma que não tem {ocorrencias} -> {numAposta}' no jogo!")
          return ganhadorPerdedor(numAposta, ocorrencias, dadosMao, dadosRobo, quemEscolheu='jogador')
 
 def apostar(dadosMao, dadosRobo):
@@ -144,11 +139,7 @@ def apostar(dadosMao, dadosRobo):
 
     resultado = None
 
-    resultadoProbabilidade = calcularProbabilidade(listaJogador=dadosMao, listaRobo=dadosRobo, numeroEscolhido=numAposta, quantidade=ocorrencias)
-
-    print()
-    print('resultado da probabilidade: ', resultadoProbabilidade)
-    print()
+    resultadoProbabilidade = calcularProbabilidade(listaRobo=dadosRobo, numeroEscolhido=numAposta, quantidade=ocorrencias)
 
     if (resultadoProbabilidade < 2 and resultadoProbabilidade != False):
         resultado = resultadoAposta(numAposta, ocorrencias, dadosMao, dadosRobo, quemEscolheu='robo')
@@ -180,7 +171,7 @@ def apostar(dadosMao, dadosRobo):
     if (len(dadosRobo) > 0 and len(dadosRobo) < 3):
         res = aleatorio6()
 
-    print(f"Aposta do seu adversário é: {res[0]} -> {res[1]}' no jogo")
+    print(f"Aposta do seu adversário é: {res[1]} -> {res[0]}' no jogo")
 
     print('==========================================================')
     print('==========================================================')
@@ -196,7 +187,7 @@ def apostar(dadosMao, dadosRobo):
 
     if (escolha == 'mentiroso' or escolha == 'm'):
 
-        resultado = resultadoAposta(res[1], res[0], dadosMao, dadosRobo, quemEscolheu='jogador')
+        resultado = resultadoAposta(res[0], res[1], dadosMao, dadosRobo, quemEscolheu='jogador')
 
         if (resultado == False):
             return girarDados(numDadosMao=len(dadosMao) - 1, numDadosRobo=len(dadosRobo))
